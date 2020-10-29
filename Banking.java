@@ -4,18 +4,36 @@ class Main
 {
     public static void main(String[] args)
     {
-        Account acc = new Account();
-        Customer dan = new Customer("Dan", 123, acc);
-        acc.customer = dan;
+        Account a1 = new Account(8,1000,null);
+        System.out.println(a1.getAmount());
 
-        acc.deposit(100);
-        acc.deposit(100);
-        acc.deposit(100);
-        acc.deposit(100);
-        acc.withdrawl(250);
+        Customer dan = new Customer("Dan", 123, a1);
 
-        System.out.println(acc);
-        System.out.println(dan.getName());
+        a1.deposit(4000);
+        a1.withdrawal(900);
+
+        Customer leo = new Customer("Leo", 223, a1);
+        System.out.println(dan);
+        System.out.println(leo.getCustomerNumber());
+
+        Customer amy = new Customer("Amy", 432);
+        Account a2 = new Account(21, 90000, amy);
+
+        Account a3 = new Account();
+
+        System.out.println("this bank has: " + a1.getNumOfAccounts() + " accounts.");
+
+        printObject(leo);
+
+        printObject("Dan has in his account " + dan.getAccount().getAmount());
+        System.out.println(amy.getCustomerNumber());
+        printObject(a1);
+        printObject(dan);
+    }
+
+    public static void printObject(Object o)
+    {
+        System.out.println(o);
     }
 }
 
@@ -25,18 +43,29 @@ class Account
     private double amount;
     Customer customer;
 
-    public Account(int i, double a, Customer c)
+    private static int numOfAccounts = 0;
+
+    public Account(int id, double amount, Customer customer)
     {
-        id = i;
-        amount = a;
-        customer = c;
+        this.id = id;
+        this.amount = amount;
+        this.customer = customer;
+
+        numOfAccounts++;
     }
 
     public Account()
     {
-        id = 999;
-        amount = 0;
-        customer = null;
+        this.id = 999;
+        this.amount = 0;
+        this.customer = null;
+
+        numOfAccounts++;
+    }
+
+    public int getNumOfAccounts()
+    {
+        return numOfAccounts;
     }
 
     public double getAmount()
@@ -44,7 +73,8 @@ class Account
         return amount;
     }
 
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
@@ -53,7 +83,7 @@ class Account
         amount += d;
     }
 
-    public void withdrawl(double d)
+    public void withdrawal(double d)
     {
         amount -= d;
     }
@@ -64,26 +94,29 @@ class Account
     }
 }
 
-package com.company.Topic_5;
-
 public class Customer
 {
     private String name;
     private int ssn;
     private Account account;
-
-    public Customer(String n, int s, Account a)
-    {
-        name = n;
-        ssn = s;
-        account = a;
-    }
+    private static int customerNumber = 0;
 
     public Customer(String n, int s)
     {
-        name = n;
-        ssn = s;
-        account = null;
+        this.name = n;
+        this.ssn = s;
+        this.account = null;
+
+        customerNumber++;
+    }
+
+    public Customer(String name, int ssn, Account account)
+    {
+        this.name = name;
+        this.ssn = ssn;
+        this.account = account;
+
+        customerNumber++;
     }
 
     public String getName()
@@ -91,9 +124,23 @@ public class Customer
         return name;
     }
 
-    public int getSsn()
+    public int getSSN()
     {
         return ssn;
     }
-}
 
+    public int getCustomerNumber()
+    {
+        return customerNumber;
+    }
+
+    public Account getAccount()
+    {
+        return account;
+    }
+
+    public String toString()
+    {
+        return "This is customer: " + name + " with the ID: " + ssn;
+    }
+}
