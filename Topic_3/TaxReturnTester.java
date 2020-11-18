@@ -1,4 +1,4 @@
-package com.company.Assignments;
+package com.company.Topic_3;
 
 import javax.swing.*;
 

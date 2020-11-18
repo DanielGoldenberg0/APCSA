@@ -1,14 +1,9 @@
-package com.company.Assignments;
+package com.company;
 
 import java.lang.Math;
 
 public class Algorithms
 {
-    public static void main(String[] args)
-    {
-        printNums(5, 5);
-    }
-
     public static void triangle(int rows)
     {
         for (int i = 0; i <= rows; i++)
@@ -129,12 +124,14 @@ public class Algorithms
             if (s[i].length() >= 3)
             {
                 if ((s[i].substring(s[i].length()-3, s[i].length()-2) +
-                        s[i].substring(s[i].length()-2, s[i].length()-1) +
-                        s[i].substring(s[i].length()-1)).equals("ing"))
+                    s[i].substring(s[i].length()-2, s[i].length()-1) +
+                    s[i].substring(s[i].length()-1)).equals("ing"))
                 {
                     System.out.println(s[i]);
                 }
             }
         }
     }
+
+    public static void main(String[] args) {}
 }

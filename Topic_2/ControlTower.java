@@ -1,4 +1,4 @@
-package com.company.Assignments;
+package com.company.Topic_2;
 
 import java.util.Scanner;
 import java.lang.Math;

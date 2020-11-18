@@ -1,4 +1,4 @@
-package com.company.Assignments;
+package com.company.Topic_4;
 
 import java.util.Scanner;
 
