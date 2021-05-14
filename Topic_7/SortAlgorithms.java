@@ -7,7 +7,7 @@ public class SortAlgorithms
     public static void main(String[] args)
     {
         ArrayList<Integer> li = new ArrayList<>();
-        populate(li, 10); // 1 million
+        populate(li, 1000000); // 1 million
 
         double startTime = System.currentTimeMillis();
         System.out.println(li);
