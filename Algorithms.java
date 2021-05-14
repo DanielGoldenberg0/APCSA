@@ -117,21 +117,92 @@ public class Algorithms
         return longest;
     }
 
-    public static void printIng(String[] s)
+    public static void insertVal(int[] arr, int num, int index)
     {
-        for (int i = 0; i < s.length; i++)
+        for (int i = arr.length - 1; i > index; i--)
         {
-            if (s[i].length() >= 3)
+            arr[i] = arr[i - 1];
+        }
+
+        arr[index] = num;
+    }
+
+    public static void deleteVal(int[] arr, int index)
+    {
+        for (int i = index; i < arr.length - 1; i++)
+        {
+            arr[i] = arr[i + 1];
+        }
+    }
+
+    public static void shiftLeft(int[] arr)
+    {
+        int temp = arr[0];
+
+        for (int i = 0; i < arr.length - 1; i++)
+        {
+            arr[i] = arr[i + 1];
+        }
+
+        arr[arr.length - 1] = temp;
+    }
+
+    public static void shiftRight(int[] arr)
+    {
+        int temp = arr[arr.length - 1];
+
+        for (int i = arr.length - 1; i > 0; i--)
+        {
+            arr[i] = arr[i - 1];
+        }
+
+        arr[0] = temp;
+    }
+
+    public static void reverseOrder(int[] arr)
+    {
+        for (int i = 0; i < arr.length / 2; i++)
+        {
+            int j = arr.length - i - 1; // index of element in end half
+            int temp = arr[i];
+
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+
+    public static void swapVals(int[] arr, int i, int j)
+    {
+        int temp;
+
+        temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    public static void swapAllVals(int[] arr)
+    {
+        if (arr.length % 2 == 0)
+        {
+            int temp;
+
+            for (int i = 1; i < arr.length-1; i++)
             {
-                if ((s[i].substring(s[i].length()-3, s[i].length()-2) +
-                    s[i].substring(s[i].length()-2, s[i].length()-1) +
-                    s[i].substring(s[i].length()-1)).equals("ing"))
-                {
-                    System.out.println(s[i]);
-                }
+                temp = arr[i];
+                arr[i] = arr[i++];
+                arr[i++] = temp;
             }
         }
     }
 
-    public static void main(String[] args) {}
+    public static void main(String[] args)
+    {
+        int[] arr = {1, 2, 3, 4, 5, 6};
+        swapAllVals(arr);
+
+        for (int num : arr)
+        {
+            System.out.println(num);
+        }
+    }
 }
